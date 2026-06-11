@@ -2,7 +2,7 @@
    T-AG Freight Line LLC - Javascript Logic Engine
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+const initApp = () => {
 
   // Initialize Lucide Icons
   if (window.lucide) {
@@ -22,10 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1200); // Premium visual duration
   };
 
-  if (document.readyState === 'complete') {
+  // Safety fallback: ensure loader fades out after max 3.5 seconds even if resources hang
+  const safetyLoaderTimeout = setTimeout(hideLoader, 3500);
+
+  const triggerHideLoader = () => {
+    clearTimeout(safetyLoaderTimeout);
     hideLoader();
+  };
+
+  if (document.readyState === 'complete') {
+    triggerHideLoader();
   } else {
-    window.addEventListener('load', hideLoader);
+    window.addEventListener('load', triggerHideLoader);
   }
 
   /* ==========================================================================
@@ -460,7 +468,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 150);
   };
 
-  initLogisticsMap();
+  if (typeof L !== 'undefined') {
+    initLogisticsMap();
+  } else {
+    console.warn("Leaflet library failed to load. Live tracking map will be disabled.");
+    const mapElement = document.getElementById('logistics-map');
+    if (mapElement) {
+      mapElement.innerHTML = `
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; color: #8892B0; padding: 20px; text-align: center; background-color: #081326; border-radius: 8px;">
+          <i data-lucide="map-pin" style="width: 48px; height: 48px; margin-bottom: 16px; color: #00C2FF;"></i>
+          <h3>Live Map Offline</h3>
+          <p style="font-size: 13px; margin-top: 8px; color: #8892B0;">Unable to load map resources. Please check your internet connection.</p>
+        </div>`;
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+  }
 
   /* ==========================================================================
      9. Live Freight Tracking Query System
@@ -1142,4 +1166,10 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => toast.remove(), 400);
     }, 5000);
   };
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
