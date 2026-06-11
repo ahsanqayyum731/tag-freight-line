@@ -18,12 +18,18 @@
       errDiv.style.fontFamily = 'monospace';
       errDiv.style.fontSize = '14px';
       errDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.5)';
-      errDiv.innerHTML = '<strong>JS Error:</strong> ' + e.message + ' at ' + e.filename + ':' + e.lineno;
+      
+      if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK' || e.target.tagName === 'IMG')) {
+        errDiv.innerHTML = '<strong>Resource Load Error:</strong> Failed to load ' + (e.target.src || e.target.href);
+      } else {
+        errDiv.innerHTML = '<strong>JS Error:</strong> ' + e.message + ' at ' + (e.filename || 'unknown') + ':' + (e.lineno || '0');
+      }
+      
       var target = document.body || document.documentElement;
       if (target) {
         target.appendChild(errDiv);
       }
-    });
+    }, true); // Use capture phase to catch script/link load errors!
   </script>
   <title>T-AG Freight Line LLC | Premium Nationwide Freight Logistics & Transportation</title>
   
