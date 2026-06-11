@@ -214,11 +214,32 @@ img {
   justify-content: center;
   align-items: center;
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+  /* Ultimate CSS safety fallback: automatically fade out after 4 seconds if JS fails */
+  animation: autoHideLoader 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes autoHideLoader {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+  85% {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 .page-loader.fade-out {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .loader-content {
