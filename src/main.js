@@ -107,6 +107,7 @@ const initApp = () => {
 
     // 3D rotation on scroll (throttled with requestAnimationFrame)
     window.addEventListener('scroll', () => {
+      if (window.innerWidth <= 768) return;
       if (!scrollTicking) {
         window.requestAnimationFrame(() => {
           const scrollPos = window.scrollY;
@@ -123,6 +124,7 @@ const initApp = () => {
     // 3D rotation on mouse move (throttled with requestAnimationFrame and cached rect)
     let mouseTicking = false;
     truckWrapper.addEventListener('mousemove', (e) => {
+      if (window.innerWidth <= 768) return;
       if (!mouseTicking) {
         window.requestAnimationFrame(() => {
           if (!rect) rect = truckWrapper.getBoundingClientRect();
@@ -140,6 +142,7 @@ const initApp = () => {
     }, { passive: true });
 
     truckWrapper.addEventListener('mouseleave', () => {
+      if (window.innerWidth <= 768) return;
       window.requestAnimationFrame(() => {
         truckObject.style.transform = `rotateX(-16deg) rotateY(-38deg) rotateZ(0deg)`;
       });
