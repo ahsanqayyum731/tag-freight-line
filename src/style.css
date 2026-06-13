@@ -701,10 +701,10 @@ img {
 /* Trailer Faces */
 .t-face {
   position: absolute;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border: 1.5px solid #94a3b8;
-  opacity: 0.95;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  opacity: 1.0;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.02);
 }
 
 /* Dimensions of Box Truck Cargo Box (140px L x 80px H x 70px W) */
@@ -731,8 +731,7 @@ img {
 }
 .t-left {
   transform: rotateY(0deg) translateZ(-35px) translateX(25px);
-  /* T-AG FREIGHT Decal overlay */
-  background-image: linear-gradient(rgba(10, 25, 47, 0.05), rgba(10, 25, 47, 0.05)), radial-gradient(circle at 30% 50%, rgba(255,107,53,0.1), transparent 70%);
+  background: #ffffff;
 }
 .t-left::after {
   content: 'T-AG FREIGHT';
@@ -758,8 +757,7 @@ img {
 }
 .t-right {
   transform: rotateY(180deg) translateZ(-35px) translateX(-25px);
-  /* Decal overlay on right side */
-  background-image: linear-gradient(rgba(10, 25, 47, 0.05), rgba(10, 25, 47, 0.05)), radial-gradient(circle at 70% 50%, rgba(255,107,53,0.1), transparent 70%);
+  background: #ffffff;
 }
 .t-right::after {
   content: 'T-AG FREIGHT';
@@ -797,8 +795,9 @@ img {
 /* Cab Faces (60px L x 60px H x 64px W) */
 .c-face {
   position: absolute;
-  background: #00C2FF;
-  border: 1px solid #004099;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  opacity: 1.0;
 }
 
 .c-left, .c-right {
@@ -816,15 +815,15 @@ img {
 
 .c-back {
   transform: rotateY(90deg) translateZ(-45px) translateY(10px);
-  background: #003380;
+  background: #f1f5f9;
 }
 .c-front {
   transform: rotateY(90deg) translateZ(-105px) translateY(10px);
-  background: linear-gradient(to bottom, #475569 0%, #475569 40%, #0052CC 40%, #0052CC 100%);
+  background: linear-gradient(to bottom, #475569 0%, #475569 40%, #ffffff 40%, #f1f5f9 100%);
 }
 .c-left {
   transform: rotateY(0deg) translateZ(-32px) translateX(-75px) translateY(10px);
-  background: linear-gradient(135deg, #00C2FF 0%, #0052CC 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
 }
 /* Cab Window */
 .c-left::after {
@@ -839,6 +838,7 @@ img {
 }
 .c-right {
   transform: rotateY(180deg) translateZ(-32px) translateX(75px) translateY(10px);
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
 }
 .c-right::after {
   content: '';
@@ -852,11 +852,11 @@ img {
 }
 .c-top {
   transform: rotateX(90deg) translateZ(20px) translateX(-75px);
-  background: #0052CC;
+  background: #ffffff;
 }
 .c-bottom {
   transform: rotateX(90deg) translateZ(-40px) translateX(-75px);
-  background: #1e293b;
+  background: #475569;
 }
 
 /* Continuous 360 spin animation for mobile */
@@ -2901,22 +2901,25 @@ img {
 
 .team-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 16px;
-  padding: 16px 20px;
-  border-radius: 12px;
+  padding: 24px 20px;
+  border-radius: 16px;
   width: calc(50% - 10px);
-  max-width: 280px;
+  max-width: 320px;
 }
 
 .team-avatar-wrapper {
-  width: 64px;
-  height: 64px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--color-primary);
+  border: 3px solid var(--color-primary);
   flex-shrink: 0;
-  box-shadow: 0 0 10px var(--color-primary-glow);
+  margin-bottom: 8px;
+  box-shadow: 0 0 15px var(--color-primary-glow);
 }
 
 .team-avatar-img {
@@ -2984,7 +2987,8 @@ img {
     padding: 120px 0 60px 0;
   }
   .hero-bg-image {
-    background-position: 65% center;
+    background-image: url('./images/t_ag_truck_mobile.png') !important;
+    background-position: center !important;
   }
 }
 
@@ -2994,7 +2998,8 @@ img {
     padding: 100px 0 50px 0;
   }
   .hero-bg-image {
-    background-position: 70% center;
+    background-image: url('./images/t_ag_truck_mobile.png') !important;
+    background-position: center !important;
   }
 }
 

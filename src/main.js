@@ -4,6 +4,12 @@
 
 const initApp = () => {
 
+  // Disable automatic browser scroll restoration to prevent jumps on reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   // Initialize Lucide Icons
   if (window.lucide) {
     window.lucide.createIcons();
