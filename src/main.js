@@ -676,7 +676,7 @@ const initApp = () => {
       });
 
       showToast('Compliance Approved', 'Onboarding data logged to server.', 'shield-check');
-      setTimeout(() => showToast('Manager Alerted', 'SMS dispatched to Tara Isardat.', 'mail'), 1000);
+      setTimeout(() => showToast('Co-Owner Alerted', 'SMS dispatched to Tara Isardat.', 'mail'), 1000);
       setTimeout(() => showToast('Confirmation Sent', `Receipt copy dispatched to ${newApp.email}`, 'mail'), 2000);
 
       renderAdminTables();
@@ -733,7 +733,7 @@ const initApp = () => {
 
       shipperForm.reset();
       showToast('Calculation Logged', 'Lane details submitted to pricing team.', 'calculator');
-      setTimeout(() => showToast('Manager Alerted', 'Inquiry notification sent to Tara Isardat.', 'mail'), 1000);
+      setTimeout(() => showToast('Co-Owner Alerted', 'Inquiry notification sent to Tara Isardat.', 'mail'), 1000);
       setTimeout(() => showToast('Quote Receipt', `Summary copy sent to ${newQuote.email}`, 'mail'), 2000);
 
       renderAdminTables();
@@ -1098,7 +1098,7 @@ const initApp = () => {
   const handleBotResponse = (option) => {
     let reply = '';
     if (option === 'quote') {
-      reply = `To request a shipping quote, please scroll to the **Request a Quote** section. Our general manager Tara Isardat will reply with pricing shortly.`;
+      reply = `To request a shipping quote, please scroll to the **Request a Quote** section. Our Co-Owner Tara Isardat will reply with pricing shortly.`;
       const quoteEl = document.getElementById('quote');
       if (quoteEl) quoteEl.scrollIntoView({ behavior: 'smooth' });
     } else if (option === 'join') {
@@ -1110,7 +1110,7 @@ const initApp = () => {
       const trackingEl = document.querySelector('.tracking-map-section');
       if (trackingEl) trackingEl.scrollIntoView({ behavior: 'smooth' });
     } else if (option === 'contact') {
-      reply = `T-AG Freight Line LLC is owned by Kemal Gadwah and managed by Tara Isardat. Direct dispatch phone: **+1 (516) 472-1484**. Local Operations: **718-666-7005**. USDOT #4506103, MC #1783292.`;
+      reply = `T-AG Freight Line LLC is owned by Kemal Gadwah and co-owned by Tara Isardat. Direct dispatch phone: **+1 (516) 472-1484**. Local Operations: **718-666-7005**. USDOT #4506103, MC #1783292.`;
     }
     
     appendMessage('bot', reply);
@@ -1132,7 +1132,7 @@ const initApp = () => {
     } else if (raw.includes('dot') || raw.includes('mc') || raw.includes('authority')) {
       reply = `T-AG Freight Line LLC operates under USDOT Authority Number **4506103** and Interstate MC Number **1783292**.`;
     } else if (raw.includes('kemal') || raw.includes('gadwah') || raw.includes('tara') || raw.includes('isardat')) {
-      reply = `T-AG Freight Line is founded and led by Kemal Gadwah (President) and managed by Tara Isardat (General Manager).`;
+      reply = `T-AG Freight Line is founded and led by Kemal Gadwah (President) and co-owned by Tara Isardat (Co-Owner & GM).`;
     } else {
       reply = `Thank you for your message! I'm an automated assistant. For immediate operations support, please call our primary hotline at **+1 (516) 472-1484** to speak directly with Kemal, Tara, or a dispatcher.`;
     }
